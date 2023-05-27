@@ -27,6 +27,7 @@ int	inicializar_datos(t_list_solong *d, char *mapa)
 {
 	d->movimientos = 0;
 	mapa_limites(d, mapa);
+	ft_leer_mapa(mapa, d);
 }
 
 int	main(int argc, char **argv)
@@ -42,4 +43,5 @@ int	main(int argc, char **argv)
 	if (!d)
 		return (0);
 	d->mlx = mlx_init(1920, 1080, "So_Long", 1);
+	inicializar_datos(d, argv[1]);
 }
