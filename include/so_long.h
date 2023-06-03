@@ -17,32 +17,46 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <fcntl.h>
 
-typedef struct s_list_solong
+typedef struct s_juego
 {
-	void	*mlx;
-	char	*linea;
-	int		movimientos;
-	int		consumibles;
-	int		jugador;
-	int		salida;
-	int		errores;
-	int		anchura_mapa;
-	int		altura_mapa;
-	int		muro;
-	int		vacio;
-	int		linea_control;
-}	t_list_solong;
+	mlx_t			*mlx;
+	mlx_image_t		*palm;
+	mlx_image_t		*arena;
+	mlx_image_t		*cofre;
+	mlx_image_t		*pirata;
+	mlx_image_t		*pirizq;
+	mlx_image_t		*exit;
+	char			*linea;
+	char			*mapa;
+	char			*mapa_copia;
+	char			*mapa_nombre;
+	int				movimientos;
+	int				vacio;
+	int				muro;
+	int				consumibles;
+	int				jugador;
+	int				salida;
+	int				errores;
+	int				columnas_mapa;
+	int				filas_mapa;
+	int				ancho;
+	int				alto;
+	int				linea_control;
+}	t_juego;
 
-void	mapa_limites(t_list_solong *d, char *mapa);
-int		inicializar_datos(t_list_solong *d, char *mapa);
+/*1.ft_leer_mapa.c*/
+void	check_linea1(t_juego *d);
+void	check_linea2(t_juego *d);
+void	check_chars_linea(t_juego *d);
+void	check_salto_linea(t_juego *d, char *fila);
+void	ft_leer_mapa(char *mapa, t_juego *d);
+/*2.ft_mostrar_mapa.c*/
+void	mapa_extension_file(t_juego *d, char *mapa);
+int		inicializar_datos(t_juego *d, char *mapa);
 int		main(int argc, char **argv);
-void	ft_error_solong2(t_list_solong *d, int error);
-void	ft_error_solong(t_list_solong *d, int error);
-int		ft_free(t_list_solong *d);
-void	check_linea_inicial(t_list_solong *d);
-void	check_primera_linea(t_list_solong *d);
-void	check_chars_linea(t_list_solong *d);
-void	check_salto_linea(t_list_solong *d, char *fila);
-void	ft_leer_mapa(char *mapa, t_list_solong *d);
+void	ft_error_solong2(t_juego *d, int error);
+void	ft_error_solong(t_juego *d, int error);
+int		ft_free(t_juego *d);
+void	ft_imagenes(t_juego *d);
 
 #endif

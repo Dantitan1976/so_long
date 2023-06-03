@@ -12,7 +12,8 @@
 
 #include "../include/so_long.h"
 
-void	mapa_limites(t_list_solong *d, char *mapa)
+/*Chequeamos la extensión del fichero del mapa*/
+void	check_ext_file(char *mapa, t_juego *d)
 {
 	int	longitud;
 
@@ -23,25 +24,25 @@ void	mapa_limites(t_list_solong *d, char *mapa)
 		ft_error_solong(d, 6);
 }
 
-int	inicializar_datos(t_list_solong *d, char *mapa)
+int	inicializar_datos(t_juego *d, char *mapa)
 {
 	d->movimientos = 0;
-	mapa_limites(d, mapa);
+	check_ext_file(mapa, d);
 	ft_leer_mapa(mapa, d);
 }
 
 int	main(int argc, char **argv)
 {
-	t_list_solong	*d;
+	t_juego	*d;
 
 	if (argc != 2)
 	{
 		ft_printf("\033[0;91mNúmero incorrecto de argumentos\033[0;39m");
 		return (0);
 	}
-	d = ft_calloc(1, sizeof(t_list_solong));
+	d = ft_calloc(1, sizeof(t_juego));
 	if (!d)
 		return (0);
-	d->mlx = mlx_init(1920, 1080, "So_Long", 1);
+	d->mlx = mlx_init(d->anchura_mapa * 50, d->altura_mapa * 32, "So_Long", 0);
 	inicializar_datos(d, argv[1]);
 }

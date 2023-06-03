@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-int	ft_free(t_list_solong *d)
+int	ft_free(t_juego *d)
 {
 	d->errores = 1;
 	if (d->linea)

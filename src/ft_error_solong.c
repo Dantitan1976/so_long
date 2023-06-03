@@ -12,15 +12,15 @@
 
 #include "../include/so_long.h"
 
-void	ft_error_solong2(t_list_solong *d, int error)
+void	ft_error_solong2(t_juego *d, int error)
 {
 	if (error == 8)
 		ft_printf("\033[0;91m\nError. Caracteres erróneos.\033[0;39m\n");
 	if (error == 9)
-		ft_printf("\033[0;91m\nError. El mapa no es rectangular.\033[0;39m\n");
+		ft_printf("\033[0;91m\nError. El mapa no es válido.\033[0;39m\n");
 }
 
-void	ft_error_solong(t_list_solong *d, int error)
+void	ft_error_solong(t_juego *d, int error)
 {
 	ft_printf("\033[0;91m\n***** ERROR ***** \033[0;39m\n");
 	if (error > 7)

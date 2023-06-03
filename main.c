@@ -17,5 +17,6 @@ int	main(void)
 	void	*mlx;
 
 	mlx = mlx_init(500, 500, "So_Long", 0);
+	
 	mlx_loop(mlx);
 }

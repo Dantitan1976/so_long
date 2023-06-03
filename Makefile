@@ -27,7 +27,7 @@ LIBRERIA = libft/libft.a
 
 AR = ar -rcs
 
-CC = gcc
+CC = gcc -g
 
 CFLAGS = -Wall -Werror -Wextra -g
 
