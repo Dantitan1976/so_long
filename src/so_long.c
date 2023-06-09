@@ -45,6 +45,7 @@ int	main(int argc, char **argv)
 	ft_leer_mapa(argv[1], &d);
 	ft_printf("Número de filas%d\n", d.filas_mapa);
 	ft_printf("Número de columnas%d\n", d.columnas_mapa);
+	
 	d.mlx = mlx_init(d.columnas_mapa * 50, d.filas_mapa * 50, "So_Long", 0);
 	mlx_loop(d.mlx);
 }

@@ -17,7 +17,7 @@ columnas y que los bordes son muros*/
 void	check_mapa(t_juego *d)
 {
 	int	filas;
-	int	*columnas;
+	int	columnas;
 
 	filas = 0;
 	d->columnas_mapa = (int)ft_strlen(d->mapa[0]);
@@ -70,7 +70,7 @@ void	check_elementos_linea(t_juego *d)
 /*Comprobamos que la posicion a comprobar está dento del mapa
 Como la salida 'E', los consumibles 'C' y el camino libre '0'
 son objetos por los que podemos pasar, los convertimos en 'F'*/
-void	ft_flood_fill(t_juego *d, int pos_ejex, int *pos_ejey)
+void	ft_flood_fill(t_juego *d, int pos_ejex, int pos_ejey)
 {
 	if (pos_ejex < 0 || pos_ejey < 0 || pos_ejey > d->filas_mapa
 		|| pos_ejex > d->columnas_mapa
@@ -90,7 +90,7 @@ void	ft_flood_fill(t_juego *d, int pos_ejex, int *pos_ejey)
 void	ft_camino(t_juego *d)
 {
 	int	filas;
-	int	*columnas;
+	int	columnas;
 
 	filas = 0;
 	while (d->mapa_copia[++filas])

@@ -19,12 +19,12 @@ un salto de linea o que la fila no exista*/
 void	ft_leer_mapa(char *ruta_mapa, t_juego *d)
 {
 	char	*fila;
-	char	*mapa_str;
+	//char	*mapa_str;
 	int		fd;
 
 	d->filas_mapa = 0;
 	d->columnas_mapa = 0;
-	mapa_str = malloc (1 * 1);
+	d->linea = malloc (1 * 1);
 	fila = malloc(1 * 1);
 	fd = open(ruta_mapa, O_RDONLY);
 	fila = get_next_line(fd);
@@ -33,7 +33,7 @@ void	ft_leer_mapa(char *ruta_mapa, t_juego *d)
 	//	ft_error_solong(d, 9);
 	while (fila)
 	{
-		mapa_str = ft_strjoin_solong(mapa_str, fila);
+		d->linea = ft_strjoin_solong(d->linea, fila);
 		free(fila);
 		fila = get_next_line(fd);
 		d->filas_mapa++;
@@ -41,9 +41,8 @@ void	ft_leer_mapa(char *ruta_mapa, t_juego *d)
 	close(fd);
 	//if (mapa_str[0] == '\n')
 	//	ft_error_solong(d, 9);
-	d->mapa = ft_split(mapa_str, '\n');
+	d->mapa = ft_split(d->linea, '\n');
 	d->columnas_mapa = ft_strlen(d->mapa[0]);
-	d->mapa_copia = ft_split(mapa_str, '\n');
+	d->mapa_copia = ft_split(d->linea, '\n');
 	free(fila);
-	free(mapa_str);
 }
