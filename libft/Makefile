@@ -37,6 +37,7 @@ LIBFT=		libft/ft_isalpha.c \
 			libft/ft_strdup.c \
 			libft/ft_substr.c \
 			libft/ft_strjoin.c \
+			libft/ft_strjoin_solong.c \
 			libft/ft_strtrim.c \
 			libft/ft_split.c \
 			libft/ft_itoa.c \

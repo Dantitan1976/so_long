@@ -29,20 +29,22 @@ int	inicializar_datos(t_juego *d, char *mapa)
 	d->movimientos = 0;
 	check_ext_file(mapa, d);
 	ft_leer_mapa(mapa, d);
+	return (0);
 }
 
 int	main(int argc, char **argv)
 {
-	t_juego	*d;
+	t_juego	d;
 
+	(void)argv;
 	if (argc != 2)
 	{
 		ft_printf("\033[0;91mNúmero incorrecto de argumentos\033[0;39m");
 		return (0);
 	}
-	d = ft_calloc(1, sizeof(t_juego));
-	if (!d)
-		return (0);
-	d->mlx = mlx_init(d->anchura_mapa * 50, d->altura_mapa * 32, "So_Long", 0);
-	inicializar_datos(d, argv[1]);
+	ft_leer_mapa(argv[1], &d);
+	ft_printf("Número de filas%d\n", d.filas_mapa);
+	ft_printf("Número de columnas%d\n", d.columnas_mapa);
+	d.mlx = mlx_init(d.columnas_mapa * 50, d.filas_mapa * 50, "So_Long", 0);
+	mlx_loop(d.mlx);
 }

@@ -6,7 +6,7 @@
 #    By: dramirez <dramirez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/06 10:11:21 by dramirez          #+#    #+#              #
-#    Updated: 2022/11/20 16:21:07 by dramirez         ###   ########.fr        #
+#    Updated: 2023/06/09 14:44:11 by dramirez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS =	ft_isalpha.c \
 		ft_strdup.c \
 		ft_substr.c \
 		ft_strjoin.c \
+		ft_strjoin_solong.c \
 		ft_strtrim.c \
 		ft_split.c \
 		ft_itoa.c \

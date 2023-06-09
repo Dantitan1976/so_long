@@ -99,8 +99,7 @@ void	ft_camino(t_juego *d)
 		while (d->mapa_copia[filas][++columnas])
 		{
 			if (d->mapa_copia[filas][columnas] == 'E')
-				ft_error_solong(d, )
+				ft_error_solong(d, 8);
 		}
-		
 	}
 }

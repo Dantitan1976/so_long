@@ -10,13 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/so_long.h"
 #include "../MLX42/include/MLX42/MLX42.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	void	*mlx;
+	t_juego	d;
 
-	mlx = mlx_init(500, 500, "So_Long", 0);
-	
-	mlx_loop(mlx);
+	if (argc != 2)
+		return (0);
+	ft_leer_mapa(argv[1], &d);
+	d.mlx = mlx_init(d.columnas_mapa, d.filas_mapa, "So_Long", 0);
+	mlx_loop(d.mlx);
 }

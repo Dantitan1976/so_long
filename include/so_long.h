@@ -27,8 +27,8 @@ typedef struct s_juego
 	mlx_image_t		*pirizq;
 	mlx_image_t		*exit;
 	char			*linea;
-	char			*mapa;
-	char			*mapa_copia;
+	char			**mapa;
+	char			**mapa_copia;
 	char			*mapa_nombre;
 	int				movimientos;
 	int				vacio;
