@@ -10,61 +10,38 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*	Chequeamos que el primer y último caracteres de la linea sean muros
-	Con posicion = d->anchura_mapa chequeamos el primer caracter
-	Con posicion = d->anchura_mapa - 2 chequeamos el último caracter*/
-
 #include "../include/so_long.h"
 
-void	check_linea1(t_juego *d)
+/*Chequeamos que todas las filas tengan el mismo número de 
+columnas y que los bordes son muros*/
+void	check_mapa(t_juego *d)
 {
-	int	posicion;
+	int	filas;
+	int	*columnas;
 
-	posicion = d->columnas_mapa - 2;
-	while (posicion < ft_strlen(d->linea))
+	filas = 0;
+	d->columnas_mapa = (int)ft_strlen(d->mapa[0]);
+	while (d->mapa[filas])
 	{
-		if (d->linea[posicion] == '1')
-			posicion = posicion + d->columnas_mapa;
-		else
-			ft_error_solong(d, 2);
-	}
-	posicion = d->columnas_mapa;
-	while (posicion < ft_strlen(d->linea))
-	{
-		if (d->linea[posicion] == '1')
-			posicion = posicion + d->columnas_mapa;
-		else
-			ft_error_solong(d, 1);
+		if (d->columnas_mapa != (int)ft_strlen(d->mapa[filas]))
+			ft_error_solong(d, 7);
+		columnas = 0;
+		while (d->mapa[filas][columnas])
+		{
+			if (filas == 0 || columnas == 0 || filas == d->filas_mapa - 1
+				|| columnas == d->columnas_mapa - 1)
+			{
+				if (d->mapa[filas][columnas] != '1')
+					ft_error_solong(d, 1);
+			}
+			columnas++;
+		}
+		filas++;
 	}
 }
 
-/*	Chequeamos que la primera fila y la última son muros
-	Con while (posicion != d->anchura_mapa) chequeamos la primera fila completa
-	Con while (ultimo != ft_strlen(d->linea)*/
-void	check_linea2(t_juego *d)
-{
-	int	posicion;
-	int	ultimo;
-
-	posicion = 0;
-	ultimo = ft_strlen(d->linea) - d->columnas_mapa;
-	while (posicion != d->columnas_mapa)
-	{
-		if (d->linea[posicion] == '1' || d->linea[posicion] == '\n')
-			posicion++;
-		else
-			ft_error_solong(d, 4);
-	}
-	while (ultimo != ft_strlen(d->linea))
-	{
-		if (d->linea[ultimo] == '1' || d->linea[ultimo] == '\n')
-			ultimo++;
-		else
-			ft_error_solong(d, 4);
-	}
-	check_linea1(d);
-}
-
+/*Chequeamos que la línea que contiene el mapa completo tiene alguno
+de los caracteres obligatorios*/
 void	check_elementos_linea(t_juego *d)
 {
 	int	posicion;
@@ -75,7 +52,7 @@ void	check_elementos_linea(t_juego *d)
 		if (d->linea[posicion] != 'C' && d->linea[posicion] != 'P'
 			&& d->linea[posicion] != 'E' && d->linea[posicion] != '1'
 			&& d->linea[posicion] != '0' && d->linea[posicion] != '\n')
-			ft_error_solong(d, 8);
+			ft_error_solong(d, 2);
 		if (d->linea[posicion] == 'C')
 			d->consumibles++;
 		if (d->linea[posicion] == 'P')
@@ -90,18 +67,40 @@ void	check_elementos_linea(t_juego *d)
 	}
 }
 
-/*Chequeamos que todas las filas tengan el mismo número de 
-columnas*/
-void	check_mapa(t_juego *d)
+/*Comprobamos que la posicion a comprobar está dento del mapa
+Como la salida 'E', los consumibles 'C' y el camino libre '0'
+son objetos por los que podemos pasar, los convertimos en 'F'*/
+void	ft_flood_fill(t_juego *d, int pos_ejex, int *pos_ejey)
+{
+	if (pos_ejex < 0 || pos_ejey < 0 || pos_ejey > d->filas_mapa
+		|| pos_ejex > d->columnas_mapa
+		|| d->mapa_copia[pos_ejex][pos_ejey] == '1'
+		|| d->mapa_copia[pos_ejex][pos_ejey] == 'F')
+		return ;
+	if (d->mapa_copia[pos_ejex][pos_ejey] == 'E'
+		|| d->mapa_copia[pos_ejex][pos_ejey] == 'C'
+		|| d->mapa_copia[pos_ejex][pos_ejey] == '0')
+		d->mapa_copia[pos_ejex][pos_ejey] = 'F';
+	ft_flood_fill(d, pos_ejex + 1, pos_ejey);
+	ft_flood_fill(d, pos_ejex - 1, pos_ejey);
+	ft_flood_fill(d, pos_ejex, pos_ejey + 1);
+	ft_flood_fill(d, pos_ejex, pos_ejey - 1);
+}
+
+void	ft_camino(t_juego *d)
 {
 	int	filas;
+	int	*columnas;
 
 	filas = 0;
-	d->columnas_mapa = (int)ft_strlen(d->mapa[0]);
-	while (d->mapa[filas])
+	while (d->mapa_copia[++filas])
 	{
-		if (d->columnas_mapa != (int)ft_strlen(d->mapa[filas]))
-			ft_error_solong(d, 7);
+		columnas = 0;
+		while (d->mapa_copia[filas][++columnas])
+		{
+			if (d->mapa_copia[filas][columnas] == 'E')
+				ft_error_solong(d, )
+		}
+		
 	}
-	filas++;
 }
