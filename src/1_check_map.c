@@ -12,6 +12,18 @@
 
 #include "../include/so_long.h"
 
+/*Chequeamos la extensión del fichero del mapa*/
+void	check_ext_file(char *mapa, t_juego *d)
+{
+	int	longitud;
+
+	longitud = ft_strlen(mapa);
+	if (longitud > 2 && mapa[longitud - 4] == '.' && mapa[longitud - 3] == 'b'
+		&& mapa[longitud - 2] == 'e' && mapa[longitud - 1] == 'r');
+	else
+		ft_error_solong(d, 6);
+}
+
 /*Chequeamos que todas las filas tengan el mismo número de 
 columnas y que los bordes son muros*/
 void	check_mapa(t_juego *d)

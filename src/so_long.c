@@ -12,24 +12,24 @@
 
 #include "../include/so_long.h"
 
-/*Chequeamos la extensión del fichero del mapa*/
-void	check_ext_file(char *mapa, t_juego *d)
+t_juego	*inicializar_struct(t_juego *d, char *argv)
 {
-	int	longitud;
-
-	longitud = ft_strlen(mapa);
-	if (longitud > 2 && mapa[longitud - 4] == '.' && mapa[longitud - 3] == 'b'
-		&& mapa[longitud - 2] == 'e' && mapa[longitud - 1] == 'r');
-	else
-		ft_error_solong(d, 6);
-}
-
-int	inicializar_datos(t_juego *d, char *mapa)
-{
+	d->mlx = NULL;
+	d->palm = NULL;
+	d->arena = NULL;
+	d->cofre = NULL;
+	d->pirata = NULL;
+	d->exit = NULL;
 	d->movimientos = 0;
-	check_ext_file(mapa, d);
-	ft_leer_mapa(mapa, d);
-	return (0);
+	d->consumibles = 0;
+	d->jugador = 0;
+	d->salida = 0;
+	d->muro = 0;
+	d->vacio = 0;
+	d->filas_mapa = 0;
+	d->columnas_mapa = 0;
+	d->mapa_nombre = ft_strdup(argv);
+	return (d);
 }
 
 int	main(int argc, char **argv)
@@ -42,10 +42,11 @@ int	main(int argc, char **argv)
 		ft_printf("\033[0;91mNúmero incorrecto de argumentos\033[0;39m");
 		return (0);
 	}
+	check_ext_file(argv[1], &d);
+	inicializar_struct(&d, argv[1]);
 	ft_leer_mapa(argv[1], &d);
 	ft_printf("Número de filas%d\n", d.filas_mapa);
 	ft_printf("Número de columnas%d\n", d.columnas_mapa);
-	
 	d.mlx = mlx_init(d.columnas_mapa * 50, d.filas_mapa * 50, "So_Long", 0);
 	mlx_loop(d.mlx);
 }

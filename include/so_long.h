@@ -24,7 +24,6 @@ typedef struct s_juego
 	mlx_image_t		*arena;
 	mlx_image_t		*cofre;
 	mlx_image_t		*pirata;
-	mlx_image_t		*pirizq;
 	mlx_image_t		*exit;
 	char			*linea;
 	char			**mapa;
@@ -44,19 +43,25 @@ typedef struct s_juego
 	int				linea_control;
 }	t_juego;
 
-/*1.ft_leer_mapa.c*/
-void	check_linea1(t_juego *d);
-void	check_linea2(t_juego *d);
-void	check_chars_linea(t_juego *d);
-void	check_salto_linea(t_juego *d, char *fila);
-void	ft_leer_mapa(char *mapa, t_juego *d);
-/*2.ft_mostrar_mapa.c*/
-void	mapa_extension_file(t_juego *d, char *mapa);
-int		inicializar_datos(t_juego *d, char *mapa);
-int		main(int argc, char **argv);
+/*1.check_map.c*/
+void	check_ext_file(char *mapa, t_juego *d);
+void	check_mapa(t_juego *d);
+void	check_elementos_linea(t_juego *d);
+void	ft_flood_fill(t_juego *d, int pos_ejex, int pos_ejey);
+void	ft_camino(t_juego *d);
+/*2_ft_leer_mapa.c*/
+void	ft_leer_mapa(char *ruta_mapa, t_juego *d);
+/*3.ft_mostrar_mapa.c*/
+void	ft_imagenes(t_juego d);
+void	ft_generar_mapa(t_juego *d);
+void	ft_mostrar_mapa(t_juego *d);
+
 void	ft_error_solong2(t_juego *d, int error);
 void	ft_error_solong(t_juego *d, int error);
 int		ft_free(t_juego *d);
 void	ft_imagenes(t_juego *d);
+/*so_long.c*/
+t_juego	*inicializar_struct(t_juego *d, char *argv);
+int		main(int argc, char **argv);
 
 #endif
