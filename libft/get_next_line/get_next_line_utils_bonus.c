@@ -33,7 +33,7 @@ char	*ft_strchr(const char *cadena, int caract)
 	return ((char *)cadena);
 }
 
-char	*ft_strdup(const char *src)
+/*char	*ft_strdup(const char *src)
 {
 	char	*nueva;
 	int		longitud;
@@ -49,7 +49,7 @@ char	*ft_strdup(const char *src)
 	}
 	nueva[longitud] = 0;
 	return (nueva);
-}
+}*/
 
 char	*ft_substr(const char *str, unsigned int inicio, size_t longitud)
 {

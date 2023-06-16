@@ -16,14 +16,20 @@ DEF_COLOR	= \033[0;39m
 VERDE		= \033[1;92m
 ROJO		= \033[0;91m
 
-SRCS = 	./src/2_ft_leer_mapa.c \
+SRCS = 	./src/1_check_map.c \
+		./src/2_ft_leer_mapa.c \
+		./src/3_ft_mostrar_mapa.c \
+		./src/4_ft_movim_jugador.c \
+		./src/ft_error_solong.c \
+		./src/ft_free_solong.c \
 		./src/so_long.c \
-		./src/ft_error_solong.c
-
+		
 OBJS = $(SRCS:.c=.o)
 
 #Compilacion#
 LIBRERIA = libft/libft.a ./MLX42/libmlx42.a -lglfw -L /Users/${USER}/.brew/opt/glfw/lib/
+
+LIBRERIA_LINUX = libft/libft.a /MLX42_linux/linux_make/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm -o $(NAME)
 
 AR = ar -rcs
 
@@ -34,7 +40,7 @@ CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -f
 
 #Reglas#
-all: libft $(NAME)
+all: libft compilar
 
 %.o: %.c
 		@echo "$(VERDE)COMPILANDO$(DEF_COLOR)"
@@ -50,19 +56,26 @@ libft:
 	@make -C libft
 	@echo "$(VERDE)Librería de funciones compilada$(DEF_COLOR)\n"
 
+	
 #mlx:
 #	@echo "\n$(VERDE) ***** COMPILANDO LIBRERIA GRÁFICA *****$(DEF_COLOR)\n"
 #	@make -C ./minilibx-linux
 #	@echo "$(VERDE)Librería gráfica compilada$(DEF_COLOR)\n"
 
 
-#compilar: $(NAME)
+compilar: $(NAME)
 
+#Para MacOs
 $(NAME): $(OBJS)
 	@echo "\n$(VERDE)****** COMPILANDO PROGRAMA SO_LONG *****$(DEF_COLOR)\n"
 	$(CC) $(CFLAGS) $(OBJS) $(LIBRERIA) -o $(NAME)
 	@echo "\n$(VERDE)So_long compilado con éxito$(DEF_COLOR)"
 
+#Para Linux
+#$(NAME): $(OBJS)
+#	@echo "\n$(VERDE)****** COMPILANDO PROGRAMA SO_LONG PARA LINUX *****$(DEF_COLOR)\n"
+#	$(CC) $(CFLAGS) $(OBJS) $(LIBRERIA_LINUX) -o $(NAME)
+#	@echo "\n$(VERDE)So_long para linux compilado con éxito$(DEF_COLOR)"
 
 clean:
 	@echo "\n$(VERDE)****** ELIMINANDO FICHEROS OBJETO******$(DEF_COLOR)\n"

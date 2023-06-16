@@ -52,31 +52,34 @@ void	check_mapa(t_juego *d)
 	}
 }
 
-/*Chequeamos que la línea que contiene el mapa completo tiene alguno
-de los caracteres obligatorios*/
-void	check_elementos_linea(t_juego *d)
+/*Chequeamos que el mapa tiene los caracteres obligatorios*/
+void	check_elementos_mapa(t_juego *d)
 {
-	int	posicion;
+	int	fila;
+	int	col;
 
-	posicion = 0;
-	while (d->linea[posicion])
+	fila = 0;
+	while (d->mapa[++fila])
 	{
-		if (d->linea[posicion] != 'C' && d->linea[posicion] != 'P'
-			&& d->linea[posicion] != 'E' && d->linea[posicion] != '1'
-			&& d->linea[posicion] != '0' && d->linea[posicion] != '\n')
-			ft_error_solong(d, 2);
-		if (d->linea[posicion] == 'C')
-			d->consumibles++;
-		if (d->linea[posicion] == 'P')
-			d->jugador++;
-		if (d->linea[posicion] == 'E')
-			d->salida++;
-		if (d->linea[posicion] == '1')
-			d->muro++;
-		if (d->linea[posicion] == '0')
-			d->vacio++;
-		posicion++;
+		col = 0;
+		while (d->mapa[fila][++col])
+		{
+			if (d->mapa[fila][col] == 'P')
+			{
+				d->jugador++;
+				d->jugador_posx = col;
+				d->jugador_posy = fila;
+			}
+			else if (d->mapa[fila][col] == 'C')
+				d->consumibles++;
+			else if (d->mapa[fila][col] == 'E')
+				d->salida++;
+			else if (d->mapa[fila][col] != '1' && d->mapa[fila][col] != '0')
+				ft_error_solong(d, 2);
+		}
 	}
+	if (d->jugador != 1 || d->salida != 1 || d->consumibles < 1)
+		ft_error_solong(d, 2);
 }
 
 /*Comprobamos que la posicion a comprobar está dento del mapa
@@ -90,9 +93,9 @@ void	ft_flood_fill(t_juego *d, int pos_ejex, int pos_ejey)
 		|| d->mapa_copia[pos_ejex][pos_ejey] == 'F')
 		return ;
 	if (d->mapa_copia[pos_ejex][pos_ejey] == 'E'
-		|| d->mapa_copia[pos_ejex][pos_ejey] == 'C'
-		|| d->mapa_copia[pos_ejex][pos_ejey] == '0')
-		d->mapa_copia[pos_ejex][pos_ejey] = 'F';
+		|| d->mapa_copia[pos_ejex][pos_ejey] == 'C')
+			d->mapa_copia[pos_ejex][pos_ejey] = '0';
+	d->mapa_copia[pos_ejex][pos_ejey] = 'F';
 	ft_flood_fill(d, pos_ejex + 1, pos_ejey);
 	ft_flood_fill(d, pos_ejex - 1, pos_ejey);
 	ft_flood_fill(d, pos_ejex, pos_ejey + 1);
@@ -110,8 +113,11 @@ void	ft_camino(t_juego *d)
 		columnas = 0;
 		while (d->mapa_copia[filas][++columnas])
 		{
-			if (d->mapa_copia[filas][columnas] == 'E')
+			if (d->mapa_copia[filas][columnas] == 'E' ||
+				d->mapa_copia[filas][columnas] == 'C')
 				ft_error_solong(d, 8);
+			columnas++;
 		}
+		filas++;
 	}
 }
