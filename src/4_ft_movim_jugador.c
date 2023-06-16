@@ -37,40 +37,40 @@ void	ft_movim_jugador(mlx_key_data_t tecla, void *parametro)
 
 void	ft_arriba(t_juego *d)
 {
-	if (d->mapa[d->jugador_posx_act][d->jugador_posy_act - 1] == '1'
-		|| (d->mapa[d->jugador_posx_act][d->jugador_posy_act - 1] == 'E'
-			&& !ft_victoria(d, d->jugador_posx_act, d->jugador_posy_act - 1)))
+	if (d->mapa[d->jugador_posy_act - 1][d->jugador_posx_act] == '1'
+		|| (d->mapa[d->jugador_posy_act - 1][d->jugador_posx_act] == 'E'
+			&& !ft_victoria(d, d->jugador_posy_act - 1, d->jugador_posx_act)))
 		return ;
 	d->pirata->instances[0].y -= 75;
-	if (d->mapa[d->jugador_posy_act - 1][d->jugador_posx] == 'C')
+	if (d->mapa[d->jugador_posy_act - 1][d->jugador_posx_act] == 'C')
 	{
 		d->consumibles--;
 		ft_tesoro_capturado(d);
 	}
-	d->mapa[d->jugador_posx_act][d->jugador_posy_act] = '0';
-	d->mapa[d->jugador_posx_act][d->jugador_posy_act - 1] = 'P';
+	d->mapa[d->jugador_posy_act][d->jugador_posx_act] = '0';
+	d->mapa[d->jugador_posy_act - 1][d->jugador_posx_act] = 'P';
 	d->jugador_posy_act--;
 	d->movimientos++;
-	ft_printf("Movimientos: %d\n", d->movimientos);
+	ft_printf("Movimientos: %d\r", d->movimientos);
 }
 
 void	ft_abajo(t_juego *d)
 {
-	if (d->mapa[d->jugador_posx_act][d->jugador_posy_act + 1] == '1'
-		|| (d->mapa[d->jugador_posx_act][d->jugador_posy_act + 1] == 'E'
-			&& !ft_victoria(d, d->jugador_posx_act, d->jugador_posy_act + 1)))
+	if (d->mapa[d->jugador_posy_act + 1][d->jugador_posx_act] == '1'
+		|| (d->mapa[d->jugador_posy_act + 1][d->jugador_posx_act] == 'E'
+			&& !ft_victoria(d, d->jugador_posy_act + 1, d->jugador_posx_act)))
 		return ;
 	d->pirata->instances[0].y += 75;
-	if (d->mapa[d->jugador_posy_act + 1][d->jugador_posx] == 'C')
+	if (d->mapa[d->jugador_posy_act + 1][d->jugador_posx_act] == 'C')
 	{
 		d->consumibles--;
 		ft_tesoro_capturado(d);
 	}
-	d->mapa[d->jugador_posx_act][d->jugador_posy_act] = '0';
-	d->mapa[d->jugador_posx_act][d->jugador_posy_act + 1] = 'P';
+	d->mapa[d->jugador_posy_act][d->jugador_posx_act] = '0';
+	d->mapa[d->jugador_posy_act + 1][d->jugador_posx_act] = 'P';
 	d->jugador_posy_act++;
 	d->movimientos++;
-	ft_printf("Movimientos: %d\n", d->movimientos);
+	ft_printf("Movimientos: %d\r", d->movimientos);
 }
 
 /*void	ft_abajo(t_juego *game)
@@ -94,38 +94,38 @@ void	ft_abajo(t_juego *d)
 
 void	ft_izquierda(t_juego *d)
 {
-	if (d->mapa[d->jugador_posx_act - 1][d->jugador_posy_act] == '1'
-		|| (d->mapa[d->jugador_posx_act - 1][d->jugador_posy_act] == 'E'
-			&& !ft_victoria(d, d->jugador_posx_act - 1, d->jugador_posy_act)))
+	if (d->mapa[d->jugador_posy_act][d->jugador_posx_act - 1] == '1'
+		|| (d->mapa[d->jugador_posy_act][d->jugador_posx_act - 1] == 'E'
+			&& !ft_victoria(d, d->jugador_posy_act, d->jugador_posx_act - 1)))
 		return ;
 	d->pirata->instances[0].x -= 75;
-	if (d->mapa[d->jugador_posy_act][d->jugador_posx - 1] == 'C')
+	if (d->mapa[d->jugador_posy_act][d->jugador_posx_act - 1] == 'C')
 	{
 		d->consumibles--;
 		ft_tesoro_capturado(d);
 	}
-	d->mapa[d->jugador_posx_act][d->jugador_posy_act] = '0';
-	d->mapa[d->jugador_posx_act - 1][d->jugador_posy_act] = 'P';
+	d->mapa[d->jugador_posy_act][d->jugador_posx_act] = '0';
+	d->mapa[d->jugador_posy_act][d->jugador_posx_act - 1] = 'P';
 	d->jugador_posx_act--;
 	d->movimientos++;
-	ft_printf("Movimientos: %d\n", d->movimientos);
+	ft_printf("Movimientos: %d\r", d->movimientos);
 }
 
 void	ft_derecha(t_juego *d)
 {
-	if (d->mapa[d->jugador_posx_act + 1][d->jugador_posy_act] == '1'
-		|| (d->mapa[d->jugador_posx_act + 1][d->jugador_posy_act] == 'E'
-			&& !ft_victoria(d, d->jugador_posx_act + 1, d->jugador_posy_act)))
+	if (d->mapa[d->jugador_posy_act][d->jugador_posx_act + 1] == '1'
+		|| (d->mapa[d->jugador_posy_act][d->jugador_posx_act + 1] == 'E'
+			&& !ft_victoria(d, d->jugador_posy_act, d->jugador_posx_act + 1)))
 		return ;
 	d->pirata->instances[0].x += 75;
-	if (d->mapa[d->jugador_posy_act][d->jugador_posx + 1] == 'C')
+	if (d->mapa[d->jugador_posy_act][d->jugador_posx_act + 1] == 'C')
 	{
 		d->consumibles--;
 		ft_tesoro_capturado(d);
 	}
-	d->mapa[d->jugador_posx_act][d->jugador_posy_act] = '0';
-	d->mapa[d->jugador_posx_act + 1][d->jugador_posy_act] = 'P';
+	d->mapa[d->jugador_posy_act][d->jugador_posx_act] = '0';
+	d->mapa[d->jugador_posy_act][d->jugador_posx_act + 1] = 'P';
 	d->jugador_posx_act++;
 	d->movimientos++;
-	ft_printf("Movimientos: %d\n", d->movimientos);
+	ft_printf("Movimientos: %d\r", d->movimientos);
 }

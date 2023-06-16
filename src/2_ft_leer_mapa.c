@@ -37,7 +37,19 @@ void	ft_leer_mapa(char *ruta_mapa, t_juego *d)
 	}
 	close(fd);
 	d->mapa = ft_split(d->linea, '\n');
-	//d->columnas_mapa = ft_strlen(d->mapa[0]);
+	d->columnas_mapa = ft_strlen(d->mapa[0]);
 	d->mapa_copia = ft_split(d->linea, '\n');
 	free(fila);
+}
+
+void	ft_print_mapa(char **matriz)
+{
+	int	y;
+
+	y = 0;
+	while (matriz[y])
+	{
+		ft_printf("%s\n", matriz[y]);
+		y++;
+	}
 }

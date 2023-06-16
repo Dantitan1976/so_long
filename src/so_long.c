@@ -47,7 +47,7 @@ void	chequeos(t_juego *d)
 	exit(0);
 }
 
-int	ft_victoria(t_juego *d, int columnas, int filas)
+int	ft_victoria(t_juego *d, int filas, int columnas)
 {
 	if (d->mapa[filas][columnas] == 'E')
 	{
@@ -55,8 +55,8 @@ int	ft_victoria(t_juego *d, int columnas, int filas)
 		{
 			if (d->mapa[filas][columnas] == 'E')
 			{
-				mlx_close_window(d->mlx);
 				ft_printf("¡¡¡¡Eres el pirata más famoso del Caribe!!!!\n");
+				mlx_close_window(d->mlx);
 				return (1);
 			}
 		}
@@ -94,11 +94,12 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	check_ext_file(argv[1], &d);
-	//d = (t_juego *)malloc(sizeof(t_juego));
+	//d = malloc(sizeof(t_juego));
 	inicializar_struct(&d, argv[1]);
 	ft_leer_mapa(argv[1], &d);
 	ft_printf("Número de filas %d\n", d.filas_mapa);
 	ft_printf("Número de columnas %d\n", d.columnas_mapa);
+	ft_print_mapa(d.mapa);
 	chequeos(&d);
 	//check_mapa(&d);
 	//check_elementos_mapa(&d);

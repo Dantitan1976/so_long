@@ -62,6 +62,7 @@ void	ft_flood_fill(t_juego *d, int pos_ejex, int pos_ejey);
 void	ft_camino(t_juego *d);
 /*2_ft_leer_mapa.c*/
 void	ft_leer_mapa(char *ruta_mapa, t_juego *d);
+void	ft_print_mapa(char **matriz);
 /*3_ft_mostrar_mapa.c*/
 void	ft_mostrar_mapa(t_juego *d);
 void	ft_crear_mapa(t_juego *d);
