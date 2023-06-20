@@ -19,7 +19,7 @@ void	ft_error_solong2(t_juego *d, int error)
 		ft_printf("\033[0;91m\nError. No hay salida posible.\033[0;39m\n");
 	if (error == 9)
 		ft_printf("\033[0;91m\nError. El mapa no es válido.\033[0;39m\n");
-	return ;
+	exit(0);
 }
 
 void	ft_error_solong(t_juego *d, int error)
@@ -41,6 +41,5 @@ void	ft_error_solong(t_juego *d, int error)
 		ft_printf("\033[0;91m\nExtensión del fichero incorrecta.\033[0;39m\n");
 	if (error == 7)
 		ft_printf("\033[0;91m\nEl mapa tiene que ser rectangular.\033[0;39m\n");
-	return ;
+	exit(0);
 }
-

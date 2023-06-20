@@ -84,22 +84,22 @@ void	check_elementos_mapa(t_juego *d)
 
 /*Comprobamos que la posicion a comprobar está dento del mapa
 Como la salida 'E', los consumibles 'C' y el camino libre '0'
-son objetos por los que podemos pasar, los convertimos en 'F'*/
-void	ft_flood_fill(t_juego *d, int pos_ejex, int pos_ejey)
+son objetos por los que podemos pasar, los convertimos en 'F'
+void	ft_flood_fill(t_juego *d, int pos_ejey, int pos_ejex)
 {
 	if (pos_ejex < 0 || pos_ejey < 0 || pos_ejey > d->filas_mapa
 		|| pos_ejex > d->columnas_mapa
-		|| d->mapa_copia[pos_ejex][pos_ejey] == '1'
-		|| d->mapa_copia[pos_ejex][pos_ejey] == 'F')
+		|| d->mapa_copia[pos_ejey][pos_ejex] == '1'
+		|| d->mapa_copia[pos_ejey][pos_ejex] == 'F')
 		return ;
-	if (d->mapa_copia[pos_ejex][pos_ejey] == 'E'
+	if (d->mapa_copia[pos_ejey][pos_ejex] == 'E'
 		|| d->mapa_copia[pos_ejex][pos_ejey] == 'C')
-			d->mapa_copia[pos_ejex][pos_ejey] = '0';
-	d->mapa_copia[pos_ejex][pos_ejey] = 'F';
-	ft_flood_fill(d, pos_ejex + 1, pos_ejey);
-	ft_flood_fill(d, pos_ejex - 1, pos_ejey);
-	ft_flood_fill(d, pos_ejex, pos_ejey + 1);
-	ft_flood_fill(d, pos_ejex, pos_ejey - 1);
+			d->mapa_copia[pos_ejey][pos_ejex] = '0';
+	d->mapa_copia[pos_ejey][pos_ejex] = 'F';
+	ft_flood_fill(d, pos_ejey, pos_ejex + 1);
+	ft_flood_fill(d, pos_ejey, pos_ejex - 1);
+	ft_flood_fill(d, pos_ejey + 1, pos_ejex);
+	ft_flood_fill(d, pos_ejey - 1, pos_ejex);
 }
 
 void	ft_camino(t_juego *d)
@@ -120,4 +120,43 @@ void	ft_camino(t_juego *d)
 		}
 		filas++;
 	}
+}*/
+
+static void	ft_fillmap(t_juego *d, int x, int y)
+{
+	if (d->mapa_copia[y][x] == 'E')
+	{
+		d->mapa_copia[y][x] = '1';
+		return ;
+	}
+	d->mapa_copia[y][x] = '1';
+	if (d->mapa_copia[y + 1][x] != '1')
+		ft_fillmap(d, x, y + 1);
+	if (d->mapa_copia[y - 1][x] != '1')
+		ft_fillmap(d, x, y - 1);
+	if (d->mapa_copia[y][x + 1] != '1')
+		ft_fillmap(d, x + 1, y);
+	if (d->mapa_copia[y][x - 1] != '1')
+		ft_fillmap(d, x - 1, y);
+}
+
+void	ft_camino(t_juego *d)
+{
+	int	posicion;
+
+	posicion = 0;
+	ft_fillmap(d, d->jugador_posx, d->jugador_posy);
+	while (d->mapa_copia[posicion])
+	{
+		if (ft_strchr(d->mapa_copia[posicion], 'E')
+			|| ft_strchr(d->mapa_copia[posicion], 'C'))
+			ft_error_solong(d, 8);
+		posicion++;
+	}
+	while (d->mapa_copia[posicion])
+	{
+		free(d->mapa_copia[posicion]);
+		posicion++;
+	}
+	//free(d->mapa_copia);
 }

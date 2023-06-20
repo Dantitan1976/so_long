@@ -37,12 +37,11 @@ t_juego	*inicializar_struct(t_juego *d, char *argv)
 
 void	chequeos(t_juego *d)
 {
-	check_mapa(d);
 	check_elementos_mapa(d);
+	check_mapa(d);
 	d->consumibles_total = d->consumibles;
+	ft_camino(d);
 	ft_mostrar_mapa(d);
-	//ft_flood_fill(d, d->jugador_posx, d->jugador_posy);
-	//ft_camino(d);
 	ft_free_solong(d);
 	exit(0);
 }
@@ -87,14 +86,12 @@ int	main(int argc, char **argv)
 {
 	t_juego	d;
 
-	//(void)argv;
 	if (argc != 2)
 	{
 		ft_printf("\033[0;91mNúmero incorrecto de argumentos\033[0;39m");
 		return (0);
 	}
 	check_ext_file(argv[1], &d);
-	//d = malloc(sizeof(t_juego));
 	inicializar_struct(&d, argv[1]);
 	ft_leer_mapa(argv[1], &d);
 	ft_printf("Número de filas %d\n", d.filas_mapa);

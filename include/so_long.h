@@ -30,8 +30,6 @@ typedef struct s_juego
 	char			**mapa_copia;
 	char			*mapa_nombre;
 	int				movimientos;
-	//int				vacio;
-	//int				muro;
 	int				consumibles;
 	int				consumibles_total;
 	int				jugador;
@@ -58,7 +56,6 @@ typedef struct s_texturas
 void	check_ext_file(char *mapa, t_juego *d);
 void	check_mapa(t_juego *d);
 void	check_elementos_mapa(t_juego *d);
-void	ft_flood_fill(t_juego *d, int pos_ejex, int pos_ejey);
 void	ft_camino(t_juego *d);
 /*2_ft_leer_mapa.c*/
 void	ft_leer_mapa(char *ruta_mapa, t_juego *d);

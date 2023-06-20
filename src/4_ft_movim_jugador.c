@@ -73,25 +73,6 @@ void	ft_abajo(t_juego *d)
 	ft_printf("Movimientos: %d\r", d->movimientos);
 }
 
-/*void	ft_abajo(t_juego *game)
-{
-	if (game->mapa[game->jugador_posy_act + 1][game->jugador_posx_act] == '1'
-		|| (game->mapa[game->jugador_posy_act + 1][game->jugador_posx_act] == 'E'
-			&& !ft_victoria(game, game->jugador_posy_act + 1, game->jugador_posx_act)))
-		return ;wwss
-	game->pirata->instances[0].y += 75;
-	if (game->mapa[game->jugador_posy_act + 1][game->jugador_posx] == 'C')
-	{
-		game->consumibles--;
-		ft_tesoro_capturado(game);
-	}
-	game->mapa[game->jugador_posy_act][game->jugador_posx_act] = '0';
-	game->mapa[game->jugador_posy_act + 1][game->jugador_posx_act] = 'P';
-	game->jugador_posy_act++;
-	game->movimientos++;
-	ft_printf("Moves: %d\n", game->movimientos);
-}*/
-
 void	ft_izquierda(t_juego *d)
 {
 	if (d->mapa[d->jugador_posy_act][d->jugador_posx_act - 1] == '1'

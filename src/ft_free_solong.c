@@ -32,5 +32,4 @@ void	ft_free_solong(t_juego *d)
 	}
 	if (d->mapa_nombre != NULL)
 		free(d->mapa_nombre);
-	//free(d);
 }

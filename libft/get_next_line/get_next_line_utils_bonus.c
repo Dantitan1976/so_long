@@ -20,7 +20,7 @@
 	while (cadena[contador])
 		contador++;
 	return (contador);
-}*/
+}
 
 char	*ft_strchr(const char *cadena, int caract)
 {
@@ -31,7 +31,7 @@ char	*ft_strchr(const char *cadena, int caract)
 		cadena++;
 	}
 	return ((char *)cadena);
-}
+}*/
 
 /*char	*ft_strdup(const char *src)
 {
