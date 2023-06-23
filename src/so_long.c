@@ -87,6 +87,7 @@ int	main(int argc, char **argv)
 {
 	t_juego	d;
 
+	atexit(ft_leaks);
 	if (argc != 2)
 	{
 		ft_printf("\033[0;91mNúmero incorrecto de argumentos\033[0;39m");

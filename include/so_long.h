@@ -67,6 +67,7 @@ void	ft_mostrar_mapa(t_juego *d);
 void	ft_crear_mapa(t_juego *d);
 void	ft_generar_mapa(t_juego *d);
 void	ft_generar_jugador(t_juego *d);
+void	ft_leaks(void);
 /*4_ft_movim_jugador.c*/
 void	ft_movim_jugador(mlx_key_data_t tecla, void *parametro);
 void	ft_arriba(t_juego *d);

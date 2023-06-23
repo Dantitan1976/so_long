@@ -14,21 +14,10 @@
 
 void	check_map2(t_juego *d)
 {
-	int	fila;
-	int	col;
-
-	fila = 0;
-	while (d->mapa[++fila])
-	{
-		col = 0;
-		while (d->mapa[fila][++col])
-		{
-			if (d->jugador != 1)
-				ft_error_solong(d, 4);
-			else if (d->salida != 1)
-				ft_error_solong(d, 5);
-			else if (d->consumibles < 1)
-				ft_error_solong(d, 3);
-		}
-	}
+	if (d->jugador != 1)
+		ft_error_solong(d, 4);
+	else if (d->salida != 1)
+		ft_error_solong(d, 5);
+	else if (d->consumibles < 1)
+		ft_error_solong(d, 3);
 }

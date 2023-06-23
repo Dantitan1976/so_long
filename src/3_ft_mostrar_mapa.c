@@ -98,3 +98,8 @@ void	ft_generar_jugador(t_juego *d)
 		fil++;
 	}
 }
+
+void	ft_leaks(void)
+{
+	system("Leaks so_long");
+}
