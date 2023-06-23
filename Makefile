@@ -17,6 +17,7 @@ VERDE		= \033[1;92m
 ROJO		= \033[0;91m
 
 SRCS = 	./src/1_check_map.c \
+		./src/1_check_map2.c \
 		./src/2_ft_leer_mapa.c \
 		./src/3_ft_mostrar_mapa.c \
 		./src/4_ft_movim_jugador.c \
@@ -40,15 +41,17 @@ CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -f
 
 #Reglas#
-all: libft compilar
+all: norminette libft mlx compilar
 
 %.o: %.c
 		@echo "$(VERDE)COMPILANDO$(DEF_COLOR)"
 		@$(CC) $(CFLAGS) -c $< -o $@
 
-#norminette:
-#	@echo "\n$(VERDE) ****** NORMINETTE DE 42 ******$(DEF_COLOR)\n"
-#	@norminette .
+norminette:
+	@echo "\n$(VERDE) ****** NORMINETTE DE 42 ******$(DEF_COLOR)\n"
+	@norminette ./include/
+	@norminette ./libft/
+	@norminette ./src/
 
 
 libft:
@@ -57,10 +60,10 @@ libft:
 	@echo "$(VERDE)Librería de funciones compilada$(DEF_COLOR)\n"
 
 	
-#mlx:
-#	@echo "\n$(VERDE) ***** COMPILANDO LIBRERIA GRÁFICA *****$(DEF_COLOR)\n"
-#	@make -C ./minilibx-linux
-#	@echo "$(VERDE)Librería gráfica compilada$(DEF_COLOR)\n"
+mlx:
+	@echo "\n$(VERDE) ***** COMPILANDO LIBRERIA GRÁFICA *****$(DEF_COLOR)\n"
+	@make -C ./MLX42
+	@echo "$(VERDE)Librería gráfica compilada$(DEF_COLOR)\n"
 
 
 compilar: $(NAME)
@@ -79,15 +82,15 @@ $(NAME): $(OBJS)
 
 clean:
 	@echo "\n$(VERDE)****** ELIMINANDO FICHEROS OBJETO******$(DEF_COLOR)\n"
-	make clean -C libft
-#	make clean -C ./minilibx-linux
+	@make clean -C libft
+	@make clean -C ./MLX42
 	$(RM) $(OBJS)
 	@echo "$(VERDE)Eliminación de ficheros objeto terminada con éxito$(DEF_COLOR)\n"
 
 fclean: clean
 	@echo "\n$(VERDE)****** ELIMINANDO FICHEROS EJECUTABLES******$(DEF_COLOR)\n"
 	make fclean -C libft
-#	make fclean -C ./minilibx-linux
+	make fclean -C ./MLX42
 	$(RM) $(NAME) $(OBJS)
 	@echo "$(VERDE)Eliminación de ficheros ejecutables terminada con éxito$(DEF_COLOR)\n"
 

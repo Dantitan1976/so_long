@@ -55,6 +55,7 @@ int	ft_victoria(t_juego *d, int filas, int columnas)
 			if (d->mapa[filas][columnas] == 'E')
 			{
 				ft_printf("¡¡¡¡Eres el pirata más famoso del Caribe!!!!\n");
+				ft_printf("Total movimientos: %d\n", d->movimientos);
 				mlx_close_window(d->mlx);
 				return (1);
 			}
@@ -98,9 +99,4 @@ int	main(int argc, char **argv)
 	ft_printf("Número de columnas %d\n", d.columnas_mapa);
 	ft_print_mapa(d.mapa);
 	chequeos(&d);
-	//check_mapa(&d);
-	//check_elementos_mapa(&d);
-	//ft_iniciar_juego(&d);
-	//d.mlx = mlx_init(d.columnas_mapa * 50, d.filas_mapa * 50, "So_Long", 0);
-	//mlx_loop(d.mlx);
 }

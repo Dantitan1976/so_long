@@ -34,7 +34,7 @@ void	ft_error_solong(t_juego *d, int error)
 	if (d->consumibles < 1 && error == 3)
 		ft_printf("\033[0;91m\nEl mapa no tiene consumibles.\033[0;39m\n");
 	if (d->jugador != 1 && error == 4)
-		ft_printf("\033[0;91m\nEl mapa debe tener un sólo jugador.\033[0;39m\n");
+		ft_printf("\033[0;91m\nEl mapa debe tener un jugador.\033[0;39m\n");
 	if (d->salida < 1 && error == 5)
 		ft_printf("\033[0;91m\nEl mapa debe tener una salida.\033[0;39m\n");
 	if (error == 6)

@@ -79,48 +79,8 @@ void	check_elementos_mapa(t_juego *d)
 		}
 	}
 	if (d->jugador != 1 || d->salida != 1 || d->consumibles < 1)
-		ft_error_solong(d, 2);
+		check_map2(d);
 }
-
-/*Comprobamos que la posicion a comprobar está dento del mapa
-Como la salida 'E', los consumibles 'C' y el camino libre '0'
-son objetos por los que podemos pasar, los convertimos en 'F'
-void	ft_flood_fill(t_juego *d, int pos_ejey, int pos_ejex)
-{
-	if (pos_ejex < 0 || pos_ejey < 0 || pos_ejey > d->filas_mapa
-		|| pos_ejex > d->columnas_mapa
-		|| d->mapa_copia[pos_ejey][pos_ejex] == '1'
-		|| d->mapa_copia[pos_ejey][pos_ejex] == 'F')
-		return ;
-	if (d->mapa_copia[pos_ejey][pos_ejex] == 'E'
-		|| d->mapa_copia[pos_ejex][pos_ejey] == 'C')
-			d->mapa_copia[pos_ejey][pos_ejex] = '0';
-	d->mapa_copia[pos_ejey][pos_ejex] = 'F';
-	ft_flood_fill(d, pos_ejey, pos_ejex + 1);
-	ft_flood_fill(d, pos_ejey, pos_ejex - 1);
-	ft_flood_fill(d, pos_ejey + 1, pos_ejex);
-	ft_flood_fill(d, pos_ejey - 1, pos_ejex);
-}
-
-void	ft_camino(t_juego *d)
-{
-	int	filas;
-	int	columnas;
-
-	filas = 0;
-	while (d->mapa_copia[++filas])
-	{
-		columnas = 0;
-		while (d->mapa_copia[filas][++columnas])
-		{
-			if (d->mapa_copia[filas][columnas] == 'E' ||
-				d->mapa_copia[filas][columnas] == 'C')
-				ft_error_solong(d, 8);
-			columnas++;
-		}
-		filas++;
-	}
-}*/
 
 static void	ft_fillmap(t_juego *d, int x, int y)
 {
@@ -158,5 +118,4 @@ void	ft_camino(t_juego *d)
 		free(d->mapa_copia[posicion]);
 		posicion++;
 	}
-	//free(d->mapa_copia);
 }

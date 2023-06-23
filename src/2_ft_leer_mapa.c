@@ -16,6 +16,17 @@
 Unimos todas las filas que leemos en una fila que llamamos mapa y luego 
 la separamos con el split. También chequeamos que el mapa no empieza con
 un salto de linea o que la fila no exista*/
+void	ft_check_linea_vacia(t_juego *d, int posicion)
+{
+	posicion = 0;
+	while (d->linea[posicion] != '\0')
+	{
+		if (d->linea[posicion] == '\n' && d->linea[posicion + 1] == '\n')
+			ft_error_solong(d, 9);
+		posicion++;
+	}
+}
+
 void	ft_leer_mapa(char *ruta_mapa, t_juego *d)
 {
 	char	*fila;
@@ -38,12 +49,7 @@ void	ft_leer_mapa(char *ruta_mapa, t_juego *d)
 		d->filas_mapa++;
 	}
 	close(fd);
-	while (d->linea[posicion] != '\0')
-	{
-		if (d->linea[posicion] == '\n' && d->linea[posicion + 1] == '\n')
-			ft_error_solong(d, 9);
-		posicion++;
-	}
+	ft_check_linea_vacia(d, posicion);
 	d->mapa = ft_split(d->linea, '\n');
 	d->columnas_mapa = ft_strlen(d->mapa[0]);
 	d->mapa_copia = ft_split(d->linea, '\n');

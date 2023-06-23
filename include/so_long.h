@@ -51,13 +51,15 @@ typedef struct s_texturas
 	mlx_texture_t	*barco_text;
 }	t_texturas;
 
-
 /*1_check_map.c*/
 void	check_ext_file(char *mapa, t_juego *d);
 void	check_mapa(t_juego *d);
 void	check_elementos_mapa(t_juego *d);
 void	ft_camino(t_juego *d);
+/*1_check_map2.c*/
+void	check_map2(t_juego *d);
 /*2_ft_leer_mapa.c*/
+void	ft_check_linea_vacia(t_juego *d, int posicion);
 void	ft_leer_mapa(char *ruta_mapa, t_juego *d);
 void	ft_print_mapa(char **matriz);
 /*3_ft_mostrar_mapa.c*/
