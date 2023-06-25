@@ -33,11 +33,11 @@ void	ft_crear_mapa(t_juego *d)
 	d->mlx = mlx_init(d->columnas_mapa * 75, d->filas_mapa * 75, "So_Long", 0);
 	if (!d->mlx)
 		ft_printf("\033[0;91mError librería gráfica\nCTRL+C: Salir\033[0;39m\n");
-	textura->palm_text = mlx_load_png("img/png/palmera.png");
-	textura->arena_text = mlx_load_png("img/png/arena.png");
-	textura->cofre_text = mlx_load_png("img/png/cofre.png");
-	textura->pirata_text = mlx_load_png("img/png/pirata.png");
-	textura->barco_text = mlx_load_png("img/png/barco.png");
+	textura->palm_text = mlx_load_png("textures/palmera.png");
+	textura->arena_text = mlx_load_png("textures/arena.png");
+	textura->cofre_text = mlx_load_png("textures/cofre.png");
+	textura->pirata_text = mlx_load_png("textures/pirata.png");
+	textura->barco_text = mlx_load_png("textures/barco.png");
 	d->palm = mlx_texture_to_image(d->mlx, textura->palm_text);
 	d->arena = mlx_texture_to_image(d->mlx, textura->arena_text);
 	d->cofre = mlx_texture_to_image(d->mlx, textura->cofre_text);
