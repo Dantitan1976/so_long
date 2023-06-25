@@ -43,7 +43,6 @@ void	chequeos(t_juego *d)
 	ft_camino(d);
 	ft_mostrar_mapa(d);
 	ft_free_solong(d);
-	exit(0);
 }
 
 int	ft_victoria(t_juego *d, int filas, int columnas)
@@ -87,7 +86,6 @@ int	main(int argc, char **argv)
 {
 	t_juego	d;
 
-	atexit(ft_leaks);
 	if (argc != 2)
 	{
 		ft_printf("\033[0;91mNúmero incorrecto de argumentos\033[0;39m");
@@ -96,8 +94,5 @@ int	main(int argc, char **argv)
 	check_ext_file(argv[1], &d);
 	inicializar_struct(&d, argv[1]);
 	ft_leer_mapa(argv[1], &d);
-	ft_printf("Número de filas %d\n", d.filas_mapa);
-	ft_printf("Número de columnas %d\n", d.columnas_mapa);
-	ft_print_mapa(d.mapa);
 	chequeos(&d);
 }

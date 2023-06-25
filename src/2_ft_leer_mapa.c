@@ -34,7 +34,6 @@ void	ft_leer_mapa(char *ruta_mapa, t_juego *d)
 	int		posicion;
 
 	fd = open(ruta_mapa, O_RDONLY);
-	d->linea = malloc (1 * 1);
 	fila = get_next_line(fd);
 	ruta_mapa = NULL;
 	posicion = 0;

@@ -48,6 +48,7 @@ void	ft_crear_mapa(t_juego *d)
 	mlx_delete_texture(textura->cofre_text);
 	mlx_delete_texture(textura->pirata_text);
 	mlx_delete_texture(textura->barco_text);
+	free(textura);
 }
 
 /*Generamos el mapa colocando cada objeto en el mapa usando la

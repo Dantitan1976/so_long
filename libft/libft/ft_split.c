@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dramirez <dramirez@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: dramirez <dramirez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 08:29:00 by dramirez          #+#    #+#             */
-/*   Updated: 2022/10/16 15:43:50 by dramirez         ###   ########.fr       */
+/*   Updated: 2023/06/25 18:22:01 by dramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ char	**ft_split(char const *s, char c)
 			pos1++;
 		total_long = ft_longpalab(s, pos1, c);
 		tabla[filas] = ft_substr(s, pos1, total_long);
+		if (!tabla[filas])
+			return (0);
 		pos1 += total_long;
 		filas++;
 		pos1++;
