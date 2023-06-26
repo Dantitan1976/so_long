@@ -41,7 +41,7 @@ CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -f
 
 #Reglas#
-all: norminette libft mlx compilar
+all: libft mlx compilar
 
 %.o: %.c
 		@echo "$(VERDE)COMPILANDO$(DEF_COLOR)"
