@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+/*Ojo, en MacOs da un error de leak de memoria si no ponemos free((char *)s1);
+antes del return (cadena3)*/
 char	*ft_strjoin_solong(char const *s1, char const *s2)
 {
 	char	*cadena3;
@@ -31,6 +33,5 @@ char	*ft_strjoin_solong(char const *s1, char const *s2)
 	while (s2[cont_cadsrc])
 		cadena3[cont_cad3++] = s2[cont_cadsrc++];
 	cadena3[cont_cad3] = '\0';
-	free((char *)s1);
 	return (cadena3);
 }

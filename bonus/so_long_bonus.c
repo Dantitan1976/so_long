@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 t_juego	*inicializar_struct(t_juego *d, char *argv)
 {
@@ -20,6 +20,7 @@ t_juego	*inicializar_struct(t_juego *d, char *argv)
 	d->cofre = NULL;
 	d->pirata = NULL;
 	d->barco = NULL;
+	d->enemigo = NULL;
 	d->movimientos = 0;
 	d->consumibles = 0;
 	d->consumibles_total = 0;

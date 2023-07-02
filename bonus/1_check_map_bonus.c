@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 /*Chequeamos la extensión del fichero del mapa*/
 void	check_ext_file(char *mapa, t_juego *d)
@@ -74,6 +74,8 @@ void	check_elementos_mapa(t_juego *d)
 				d->consumibles++;
 			else if (d->mapa[fila][col] == 'E')
 				d->salida++;
+			else if (d->mapa[fila][col] == 'X')
+				d->enemigo++;
 			else if (d->mapa[fila][col] != '1' && d->mapa[fila][col] != '0')
 				ft_error_solong(d, 2);
 		}
