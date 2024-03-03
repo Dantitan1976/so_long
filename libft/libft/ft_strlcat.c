@@ -6,7 +6,7 @@
 /*   By: dramirez <dramirez@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 18:37:55 by dramirez          #+#    #+#             */
-/*   Updated: 2022/10/02 19:01:08 by dramirez         ###   ########.fr       */
+/*   Updated: 2024/03/03 18:08:52 by dramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	if (pos_dst < size)
 		dst[pos_dst + pos_src] = '\0';
 	return (pos_dst + ft_strlen(src));
-}	
+}
+

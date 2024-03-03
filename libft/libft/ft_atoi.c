@@ -6,7 +6,7 @@
 /*   By: dramirez <dramirez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 12:59:07 by dramirez          #+#    #+#             */
-/*   Updated: 2022/10/09 13:56:37 by dramirez         ###   ########.fr       */
+/*   Updated: 2024/03/03 18:08:12 by dramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	ft_atoi(const char *nptr)
 		cont++;
 	while (nptr[cont] != '\0' && (nptr[cont] >= '0' && nptr[cont] <= '9'))
 	{
-			numeros = (numeros * 10) + (nptr[cont] - '0');
-			cont++;
+		numeros = (numeros * 10) + (nptr[cont] - '0');
+		cont++;
 	}
 	if (signo == 1)
 		return (-numeros);
